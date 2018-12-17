@@ -5,10 +5,15 @@ const Form = (props) => {
     return (
         <div>
             <form onSubmit={getWeather}>
-                <input type="text" name="city" placeholder="City..."/>
-                <input type="text" name="country" placeholder="Country..."/>
+                <div className="form-group">
+                    <input className="form-control" type="text" name="city" placeholder="City..."/>
+                </div>
+                <div className="form-group">
+                    <input className="form-control" type="text" name="country" placeholder="Country..."/>
+                    <div style={{display: 'block'}} className="invalid-feedback">Example: City - Lviv, Country - UA</div>
+                </div>
 
-                <button>Get Weather</button>
+                <button className="btn btn-success">Get Weather</button>
             </form>
         </div>
     );

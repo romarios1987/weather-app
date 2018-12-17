@@ -51,20 +51,18 @@ export default class App extends Component {
     };
 
     render() {
-        const {temperature, city, country, humidity, description, icon, error} = this.state;
         return (
             <div className="App">
-                <Titles/>
-                <Form getWeather={this.getWeather}/>
-                <Weather
-                    temperature={temperature}
-                    city={city}
-                    country={country}
-                    humidity={humidity}
-                    description={description}
-                    icon={icon}
-                    error={error}
-                />
+                <div className="container">
+                    <div className="wrap shadow p-3 mb-5 rounded">
+                        <div className="col-sm-6 offset-sm-3">
+                            <Titles/>
+                            <Form getWeather={this.getWeather}/>
+                            <hr/>
+                            <Weather {...this.state}/>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
