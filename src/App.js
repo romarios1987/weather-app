@@ -4,6 +4,7 @@ import Titles from "./components/Titles";
 import Form from "./components/Form";
 import Weather from "./components/Weather";
 
+
 const API_KEY = "8f4071eeaad30ea77607938eefb0a342";
 
 
@@ -20,14 +21,14 @@ export default class App extends Component {
         error: null
     };
 
-
     getWeather = async (e) => {
         e.preventDefault();
         const city = e.target.elements.city.value;
         const country = e.target.elements.country.value;
-        const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${API_KEY}`);
-        const data = await api_call.json();
-
+        const data = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${API_KEY}`)
+            .then(res => res.json())
+            .catch(err => console.log('Error: ', err));
+        //const data = await api_call.json();
         if (city && country) {
             console.log(data);
             this.setState({
@@ -40,7 +41,7 @@ export default class App extends Component {
                 error: ""
 
             })
-        }else {
+        } else {
             this.setState({
                 error: "Enter the City and Country"
 
@@ -51,7 +52,6 @@ export default class App extends Component {
 
     render() {
         const {temperature, city, country, humidity, description, icon, error} = this.state;
-
         return (
             <div className="App">
                 <Titles/>

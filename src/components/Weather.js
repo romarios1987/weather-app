@@ -1,18 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-export default class Weather extends Component {
-    render() {
-        const imgSrc = `http://openweathermap.org/img/w/${this.props.icon}.png`;
-        return (
-            <div>
-                <h1>{this.props.error}</h1>
-                {this.props.icon ? <img src={imgSrc} alt={this.props.description}/> : null}
-               <p>Location: {this.props.city}{this.props.country}</p>
-               <p>Temperature: {this.props.temperature}</p>
-               <p>Humidity: {this.props.humidity}</p>
-               <p>Description: {this.props.description}</p>
-            </div>
-        );
-    }
-}
+const Weather = (props) => {
+    const imgSrc = `http://openweathermap.org/img/w/${props.icon}.png`;
+    const {error, icon, description, city, country, temperature, humidity} = props;
+    const celsius = temperature ? temperature -273.15: null;
+    return (
+        <div>
+            <h1>{error}</h1>
+            {icon ? <img src={imgSrc} alt={description}/> : null}
+            <p>Location: {city}{country}</p>
+            <p>Temperature: {celsius}</p>
+            <p>Humidity: {humidity}</p>
+            <p>Description: {description}</p>
+        </div>
+    );
+};
 
+export default Weather;
