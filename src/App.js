@@ -25,7 +25,7 @@ export default class App extends Component {
         e.preventDefault();
         const city = e.target.elements.city.value;
         const country = e.target.elements.country.value;
-        const data = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${API_KEY}`)
+        const data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${API_KEY}`)
             .then(res => res.json())
             .catch(err => console.log('Error: ', err));
         //const data = await api_call.json();
